@@ -16,13 +16,9 @@ export function formatEngagementScore(score: number): string {
 }
 
 export const PLATFORM_COLORS = {
-  linkedin: "#0A66C2",
   instagram: "#E1306C",
-  twitter: "#1DA1F2",
 } as const;
 
 export const PLATFORM_LABELS = {
-  linkedin: "LinkedIn",
   instagram: "Instagram",
-  twitter: "X (Twitter)",
 } as const;

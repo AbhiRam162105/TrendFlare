@@ -9,18 +9,14 @@ import {
   Pencil,
   Image as ImageIcon,
   Copy,
-  Linkedin,
   Instagram,
-  Twitter,
   Loader2,
   Zap,
   TrendingUp,
 } from "lucide-react";
 
 const platforms = [
-  { id: "linkedin", name: "LinkedIn", icon: Linkedin, color: "bg-blue-500" },
   { id: "instagram", name: "Instagram", icon: Instagram, color: "bg-pink-500" },
-  { id: "twitter", name: "X (Twitter)", icon: Twitter, color: "bg-sky-400" },
 ];
 
 const mockVariants = [
@@ -51,7 +47,7 @@ const mockVariants = [
 ];
 
 export default function GeneratePage() {
-  const [selectedPlatform, setSelectedPlatform] = useState("linkedin");
+  const [selectedPlatform, setSelectedPlatform] = useState("instagram");
   const [isGenerating, setIsGenerating] = useState(false);
   const [variants, setVariants] = useState<typeof mockVariants | null>(null);
 

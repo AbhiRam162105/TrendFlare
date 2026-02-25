@@ -153,14 +153,12 @@ function BrandVoiceSettings() {
 
 function SocialAccountsSettings() {
   const accounts = [
-    { name: "LinkedIn", connected: true, handle: "@trendflare", color: "bg-blue-500" },
     {
       name: "Instagram",
       connected: true,
       handle: "@trendflare.ai",
       color: "bg-pink-500",
     },
-    { name: "X (Twitter)", connected: false, handle: "—", color: "bg-sky-400" },
   ];
 
   return (
@@ -276,7 +274,6 @@ function APIKeysSettings() {
     { name: "GEMINI_API_KEY", set: true },
     { name: "HF_TOKEN", set: true },
     { name: "AYRSHARE_API_KEY", set: false },
-    { name: "REDDIT_CLIENT_ID", set: true },
   ];
 
   return (

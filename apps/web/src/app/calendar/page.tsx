@@ -25,22 +25,20 @@ import {
 interface ScheduledPost {
   id: string;
   date: Date;
-  platform: "linkedin" | "instagram" | "twitter";
+  platform: "instagram";
   status: "draft" | "scheduled" | "published";
   title: string;
 }
 
 const platformStyle = {
-  linkedin: { color: "bg-blue-500", label: "LI" },
   instagram: { color: "bg-pink-500", label: "IG" },
-  twitter: { color: "bg-sky-400", label: "X" },
 };
 
 const mockPosts: ScheduledPost[] = [
   {
     id: "1",
     date: new Date(),
-    platform: "linkedin",
+    platform: "instagram",
     status: "scheduled",
     title: "AI Healthcare Trends",
   },
@@ -54,14 +52,14 @@ const mockPosts: ScheduledPost[] = [
   {
     id: "3",
     date: new Date(Date.now() + 86400000),
-    platform: "twitter",
+    platform: "instagram",
     status: "draft",
-    title: "Tech Thread",
+    title: "Tech Innovation Reel",
   },
   {
     id: "4",
     date: new Date(Date.now() + 86400000 * 2),
-    platform: "linkedin",
+    platform: "instagram",
     status: "scheduled",
     title: "Remote Work Insights",
   },
@@ -75,16 +73,16 @@ const mockPosts: ScheduledPost[] = [
   {
     id: "6",
     date: new Date(Date.now() - 86400000),
-    platform: "linkedin",
+    platform: "instagram",
     status: "published",
     title: "Industry Report Share",
   },
   {
     id: "7",
     date: new Date(Date.now() - 86400000 * 2),
-    platform: "twitter",
+    platform: "instagram",
     status: "published",
-    title: "Quick Tip Thread",
+    title: "Quick Tips for Founders",
   },
 ];
 
@@ -232,21 +230,9 @@ export default function CalendarPage() {
       {/* Legend */}
       <div className="mt-4 flex items-center gap-6">
         <div className="flex items-center gap-2">
-          <div className="h-2.5 w-2.5 rounded-full bg-blue-500" />
-          <span className="font-display text-xs font-bold text-brand-text-muted">
-            LinkedIn
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
           <div className="h-2.5 w-2.5 rounded-full bg-pink-500" />
           <span className="font-display text-xs font-bold text-brand-text-muted">
             Instagram
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-2.5 w-2.5 rounded-full bg-sky-400" />
-          <span className="font-display text-xs font-bold text-brand-text-muted">
-            X (Twitter)
           </span>
         </div>
         <div className="mx-4 h-4 w-px bg-brand-border-light" />

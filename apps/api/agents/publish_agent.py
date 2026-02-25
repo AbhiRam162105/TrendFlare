@@ -36,9 +36,7 @@ class PublishAgent:
 
         # Map to Ayrshare platform names
         platform_map = {
-            "linkedin": "linkedin",
             "instagram": "instagram",
-            "twitter": "twitter",
         }
         ayrshare_platform = platform_map.get(platform, platform)
 
@@ -50,14 +48,6 @@ class PublishAgent:
 
         if image_url:
             payload["mediaUrls"] = [image_url]
-
-        # Platform-specific options
-        if platform == "linkedin":
-            payload["linkedinOptions"] = {"visibility": "public"}
-        elif platform == "twitter":
-            # Handle thread if content > 280 chars
-            if len(content) > 280:
-                payload["twitterOptions"] = {"thread": True}
 
         logger.info(
             "Publishing to Ayrshare",

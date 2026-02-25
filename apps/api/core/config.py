@@ -17,11 +17,6 @@ class Settings(BaseSettings):
     supabase_anon_key: str = ""
     supabase_service_key: str = ""
 
-    # Reddit
-    reddit_client_id: str = ""
-    reddit_client_secret: str = ""
-    reddit_user_agent: str = "TrendFlare/1.0"
-
     # Ayrshare
     ayrshare_api_key: str = ""
 

@@ -17,7 +17,6 @@ huggingface-hub==0.27.1
 
 # Trend discovery
 pytrends==4.9.2
-praw==7.8.1
 
 # Database
 supabase==2.11.0

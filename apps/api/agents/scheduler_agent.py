@@ -17,19 +17,9 @@ logger = structlog.get_logger()
 
 # Default optimal posting windows by platform
 DEFAULT_WINDOWS = {
-    "linkedin": {
-        "best_days": [1, 2, 3],  # Tue, Wed, Thu (0=Mon)
-        "best_hours": [8, 9, 10, 12],
-        "timezone": "America/New_York",
-    },
     "instagram": {
         "best_days": [0, 2, 4],  # Mon, Wed, Fri
         "best_hours": [11, 12, 18, 19, 20],
-        "timezone": "America/New_York",
-    },
-    "twitter": {
-        "best_days": [0, 1, 2, 3, 4],  # Weekdays
-        "best_hours": [9, 12, 17, 18],
         "timezone": "America/New_York",
     },
 }
@@ -88,7 +78,7 @@ class SchedulerAgent:
 
         if not best_hours:
             # Use platform defaults
-            defaults = DEFAULT_WINDOWS.get(platform, DEFAULT_WINDOWS["linkedin"])
+            defaults = DEFAULT_WINDOWS.get(platform, DEFAULT_WINDOWS["instagram"])
             best_hours = defaults["best_hours"]
             best_days = defaults["best_days"]
         else:

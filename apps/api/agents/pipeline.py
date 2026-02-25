@@ -37,7 +37,7 @@ async def run_pipeline(
 
     Args:
         brand_data: Full brand record from database
-        platform: Target platform (linkedin/instagram/twitter)
+        platform: Target platform (instagram)
         niche_override: Optional niche to use instead of brand's default
         tone_override: Optional tone to use instead of brand's default
 
