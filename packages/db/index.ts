@@ -1,4 +1,4 @@
-export type Platform = "linkedin" | "instagram" | "twitter";
+export type Platform = "instagram";
 export type PostStatus = "draft" | "scheduled" | "published" | "failed";
 
 export interface Brand {

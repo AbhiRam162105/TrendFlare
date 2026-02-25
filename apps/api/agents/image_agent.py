@@ -76,9 +76,7 @@ class ImageAgent:
     ) -> str:
         """Use Gemini to create an optimized FLUX image prompt."""
         platform_sizes = {
-            "linkedin": "landscape orientation, 1200x627 aspect ratio",
             "instagram": "square composition, 1080x1080 aspect ratio",
-            "twitter": "landscape orientation, 1600x900 aspect ratio",
         }
 
         prompt = f"""Create an image generation prompt for FLUX.1 AI model to accompany this social media post.

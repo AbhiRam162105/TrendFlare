@@ -167,7 +167,7 @@ class FeedbackAgent:
             return {}
 
     def _analyze_sentiment(self, comments: list[str]) -> dict:
-        """Analyze sentiment of comments using Twitter-RoBERTa on HuggingFace."""
+        """Analyze sentiment of comments using RoBERTa on HuggingFace."""
         if not comments or not self.settings.hf_token:
             return {"positive": 0, "neutral": 0, "negative": 0, "score": 0}
 
@@ -328,7 +328,7 @@ class FeedbackAgent:
                     dspy.Example(
                         trend_angle=ex.get("trend_angle", ""),
                         brand_voice=f"Platform: {ex.get('platform', '')}",
-                        platform=ex.get("platform", "linkedin"),
+                        platform=ex.get("platform", "instagram"),
                         past_winners="",
                         caption=ex.get("content", ""),
                         hook=ex.get("hook", ""),

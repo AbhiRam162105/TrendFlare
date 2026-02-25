@@ -39,7 +39,7 @@ class GeneratePost(dspy.Signature):
 
     trend_angle = dspy.InputField(desc="trending topic angle with keywords")
     brand_voice = dspy.InputField(desc="brand tone, style guide, and voice examples")
-    platform = dspy.InputField(desc="target platform: linkedin, instagram, or twitter")
+    platform = dspy.InputField(desc="target platform: instagram")
     past_winners = dspy.InputField(desc="examples of high-engagement past posts")
 
     caption = dspy.OutputField(desc="engaging social media caption with hashtags included at the end")
@@ -206,9 +206,7 @@ class ContentAgent:
         ][variant_index % 3]
 
         platform_guide = {
-            "linkedin": "Professional tone, 150-300 words, use line breaks and bullet points, end with CTA",
             "instagram": "Casual but polished, 80-150 words, emoji-friendly, strong visual hook",
-            "twitter": "Punchy and concise, max 280 chars, thread-ready, quotable statements",
         }
 
         prompt = f"""Generate a {platform} social media post.
@@ -273,7 +271,7 @@ Return raw JSON, no markdown formatting."""
         word_count = len(words)
 
         # Optimal length per platform
-        optimal = {"linkedin": 200, "instagram": 100, "twitter": 50}
+        optimal = {"instagram": 100}
         target = optimal.get(platform, 150)
         length_score = 1 - abs(word_count - target) / target
         score += max(0, length_score * 0.015)

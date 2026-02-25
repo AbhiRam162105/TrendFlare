@@ -26,7 +26,7 @@ class BrandResponse(BaseModel):
 # ==================== Content Generation ====================
 class GenerateRequest(BaseModel):
     brand_id: str
-    platform: str = Field(pattern=r"^(linkedin|instagram|twitter)$")
+    platform: str = Field(default="instagram", pattern=r"^(instagram)$")
     niche_override: Optional[str] = None
     tone_override: Optional[str] = None
 

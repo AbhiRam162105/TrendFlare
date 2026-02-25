@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS public.posts (
     hashtags TEXT[] DEFAULT '{}',
     image_url TEXT,
     image_prompt TEXT,
-    platform TEXT NOT NULL CHECK (platform IN ('linkedin', 'instagram', 'twitter')),
+    platform TEXT NOT NULL CHECK (platform IN ('instagram')),
     status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'scheduled', 'published', 'failed')),
     scheduled_at TIMESTAMPTZ,
     published_at TIMESTAMPTZ,

@@ -25,8 +25,8 @@ const engagementData = [
 
 const topPosts = [
   {
-    title: "AI Healthcare Disruption Thread",
-    platform: "linkedin",
+    title: "AI Healthcare Disruption",
+    platform: "instagram",
     score: 8.2,
     likes: 234,
     comments: 45,
@@ -34,7 +34,7 @@ const topPosts = [
   },
   {
     title: "Remote Work Future — 5 Predictions",
-    platform: "linkedin",
+    platform: "instagram",
     score: 7.1,
     likes: 189,
     comments: 32,
@@ -42,7 +42,7 @@ const topPosts = [
   },
   {
     title: "Sustainable Tech Stack Guide",
-    platform: "twitter",
+    platform: "instagram",
     score: 6.8,
     likes: 312,
     comments: 28,
@@ -58,7 +58,7 @@ const topPosts = [
   },
   {
     title: "Startup Growth Metrics Decoded",
-    platform: "linkedin",
+    platform: "instagram",
     score: 5.9,
     likes: 167,
     comments: 41,
@@ -67,9 +67,7 @@ const topPosts = [
 ];
 
 const platformColors: Record<string, string> = {
-  linkedin: "bg-blue-500",
   instagram: "bg-pink-500",
-  twitter: "bg-sky-400",
 };
 
 export default function AnalyticsPage() {

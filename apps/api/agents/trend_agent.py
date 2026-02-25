@@ -1,6 +1,6 @@
 """
-TrendAgent — Discovers trending topics using Pytrends + Reddit PRAW + Gemini Search Grounding.
-Returns structured TrendReport with scored angles.
+TrendAgent — Discovers trending topics using Pytrends + Gemini Search Grounding.
+Returns structured TrendReport with scored angles for Instagram content creation.
 """
 
 import json
@@ -62,11 +62,8 @@ class TrendAgent:
         # Step 1: Fetch Google Trends data
         trends_data = self._fetch_google_trends(niche)
 
-        # Step 2: Fetch Reddit discussions
-        reddit_data = self._fetch_reddit_posts(niche)
-
-        # Step 3: Synthesize with Gemini + search grounding
-        report = await self._synthesize_trends(niche, trends_data, reddit_data)
+        # Step 2: Synthesize with Gemini + search grounding
+        report = await self._synthesize_trends(niche, trends_data)
 
         # Cache the result
         self._cache_report(brand_id, niche, report)
@@ -112,60 +109,20 @@ class TrendAgent:
             logger.warning("Google Trends fetch failed, continuing", error=str(e))
             return []
 
-    def _fetch_reddit_posts(self, niche: str) -> list[dict]:
-        """Fetch top relevant Reddit posts using PRAW."""
-        try:
-            import praw
-
-            reddit = praw.Reddit(
-                client_id=self.settings.reddit_client_id,
-                client_secret=self.settings.reddit_client_secret,
-                user_agent=self.settings.reddit_user_agent,
-            )
-
-            results = []
-            # Search across Reddit for the niche
-            for submission in reddit.subreddit("all").search(
-                niche, sort="hot", time_filter="week", limit=10
-            ):
-                results.append({
-                    "title": submission.title,
-                    "subreddit": submission.subreddit.display_name,
-                    "score": submission.score,
-                    "num_comments": submission.num_comments,
-                    "url": submission.url,
-                    "selftext": (submission.selftext[:500] if submission.selftext else ""),
-                })
-
-            # Sort by engagement
-            results.sort(key=lambda x: x["score"] + x["num_comments"] * 2, reverse=True)
-            results = results[:5]
-
-            logger.info("Reddit posts fetched", count=len(results))
-            return results
-
-        except Exception as e:
-            logger.warning("Reddit fetch failed, continuing", error=str(e))
-            return []
-
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(min=2, max=10))
     async def _synthesize_trends(
         self,
         niche: str,
         trends_data: list[dict],
-        reddit_data: list[dict],
     ) -> TrendReport:
         """Use Gemini 2.0 Flash with search grounding to synthesize top 3 trend angles."""
 
-        prompt = f"""You are a social media trend analyst. Analyze the following data about the "{niche}" niche and identify the top 3 most actionable trending angles for social media content creation.
+        prompt = f"""You are a social media trend analyst specializing in Instagram content. Analyze the following data about the "{niche}" niche and identify the top 3 most actionable trending angles for Instagram content creation.
 
 ## Google Trends Data (past 7 days):
 {json.dumps(trends_data, indent=2) if trends_data else "No Google Trends data available."}
 
-## Top Reddit Discussions (this week):
-{json.dumps(reddit_data, indent=2) if reddit_data else "No Reddit data available."}
-
-Based on this data AND your knowledge of current trends, return EXACTLY 3 trending angles as a JSON array.
+Based on this data AND your knowledge of current Instagram trends (including trending hashtags and Reels topics), return EXACTLY 3 trending angles as a JSON array.
 
 Each angle must have:
 - "angle": A clear, specific content angle (not generic)
@@ -216,7 +173,6 @@ Example format:
                 angles=angles,
                 sources=[
                     {"type": "google_trends", "count": len(trends_data)},
-                    {"type": "reddit", "count": len(reddit_data)},
                 ],
                 created_at=datetime.now(timezone.utc).isoformat(),
             )
