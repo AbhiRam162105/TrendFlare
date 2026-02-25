@@ -1,0 +1,14 @@
+{
+  "name": "trendflare",
+  "private": true,
+  "scripts": {
+    "dev:web": "pnpm --filter @trendflare/web dev",
+    "dev:api": "cd apps/api && uvicorn main:app --reload --host 0.0.0.0 --port 8000",
+    "build:web": "pnpm --filter @trendflare/web build",
+    "lint:web": "pnpm --filter @trendflare/web lint",
+    "dev": "concurrently \"pnpm dev:web\" \"pnpm dev:api\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

@@ -1,0 +1,28 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export function formatNumber(num: number): string {
+  if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
+  if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
+  return num.toString();
+}
+
+export function formatEngagementScore(score: number): string {
+  return `${(score * 100).toFixed(1)}%`;
+}
+
+export const PLATFORM_COLORS = {
+  linkedin: "#0A66C2",
+  instagram: "#E1306C",
+  twitter: "#1DA1F2",
+} as const;
+
+export const PLATFORM_LABELS = {
+  linkedin: "LinkedIn",
+  instagram: "Instagram",
+  twitter: "X (Twitter)",
+} as const;

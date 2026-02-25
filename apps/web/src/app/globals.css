@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-brand-border;
+  }
+
+  body {
+    @apply bg-brand-bg text-brand-text antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-brand-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-brand-border-light;
+  }
+}
+
+@layer components {
+  .card {
+    @apply relative rounded-2xl border-2 border-brand-border bg-brand-bg-card p-6 shadow-card transition-all;
+  }
+
+  .card:hover {
+    @apply shadow-card-hover -translate-y-0.5;
+  }
+
+  .card-header {
+    @apply flex items-center justify-between mb-5;
+  }
+
+  .card-icon {
+    @apply flex h-10 w-10 items-center justify-center rounded-xl bg-brand-accent;
+  }
+
+  .card-title {
+    @apply font-display text-xs font-bold uppercase tracking-widest text-brand-text-muted;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl border-2 border-brand-border bg-brand-accent px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-brand-dark shadow-card-sm transition-all hover:bg-brand-accent-hover hover:-translate-y-0.5 hover:shadow-card active:translate-y-0 active:shadow-none disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border-2 border-brand-border bg-brand-bg-card px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-brand-dark shadow-card-sm transition-all hover:bg-brand-bg-muted hover:-translate-y-0.5 hover:shadow-card active:translate-y-0 active:shadow-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-display text-sm font-bold uppercase tracking-wide text-brand-text-muted transition-colors hover:bg-brand-bg-muted hover:text-brand-dark;
+  }
+
+  .input {
+    @apply w-full rounded-xl border-2 border-brand-border bg-brand-bg-card px-4 py-2.5 font-sans text-sm text-brand-text placeholder:text-brand-text-muted focus:border-brand-accent focus:outline-none focus:ring-2 focus:ring-brand-accent-muted;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-lg border-2 border-brand-border px-3 py-1 font-display text-xs font-bold uppercase tracking-wider;
+  }
+
+  .stat-value {
+    @apply font-display text-3xl font-bold tracking-tight text-brand-dark;
+  }
+
+  .stat-label {
+    @apply font-display text-xs font-bold uppercase tracking-widest text-brand-text-muted;
+  }
+}
